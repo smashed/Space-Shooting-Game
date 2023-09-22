@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://rkihwpy05b3m"]
+
+[ext_resource type="Script" path="res://Assets/Environment/Background/BG.cs" id="1_554xo"]
+[ext_resource type="Texture2D" uid="uid://craqxbo50l71f" path="res://Assets/Sprites/Background.png" id="2_21c0j"]
+[ext_resource type="Shader" path="res://Assets/Environment/Background/BG.gdshader" id="3_qpc6n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1no64"]
+shader = ExtResource("3_qpc6n")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed_scale = 0.05
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_554xo")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1536, 1990)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(512, 1024)
+texture = ExtResource("2_21c0j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_1no64")
+offset_right = 2048.0
+offset_bottom = 2048.0
+texture = ExtResource("2_21c0j")
+stretch_mode = 1

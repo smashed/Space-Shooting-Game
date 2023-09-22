@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://fjwkteeff04g"]
+
+[ext_resource type="Script" path="res://Scenes/Main.cs" id="1_1laid"]
+[ext_resource type="PackedScene" uid="uid://rkihwpy05b3m" path="res://Assets/Environment/Background/BG.tscn" id="2_30pqy"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1laid")
+
+[node name="PlayButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 650.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_30pqy")]
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
