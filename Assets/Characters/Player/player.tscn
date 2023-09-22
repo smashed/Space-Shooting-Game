@@ -75,6 +75,7 @@ animations = [{
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_pbxid"]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_q22qg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -87,14 +88,9 @@ texture = ExtResource("2_rp5j7")
 sprite_frames = SubResource("SpriteFrames_ewofo")
 animation = &"Powering"
 autoplay = "Idle"
-frame = 3
-frame_progress = 0.199495
 
 [node name="SpriteShipEngine2D" type="Sprite2D" parent="."]
 texture = ExtResource("5_83gp8")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

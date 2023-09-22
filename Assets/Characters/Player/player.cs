@@ -3,7 +3,7 @@ using System;
 
 public partial class player : CharacterBody2D
 {
-	const float Speed = 300.0f;
+	const float Speed = 600.0f;
 	//@onready var anim = get_node("AnimationPlayer")
 
 	public override void _PhysicsProcess(double delta)
