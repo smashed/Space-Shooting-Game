@@ -1,78 +1,716 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfi1je071bwdp"]
+[gd_scene load_steps=74 format=3 uid="uid://dfi1je071bwdp"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/player.cs" id="1_q22qg"]
+[ext_resource type="Texture2D" uid="uid://bjfjv4u2e80we" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Damaged.png" id="2_i2nlv"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Ship/Ship.cs" id="2_mbik0"]
 [ext_resource type="Texture2D" uid="uid://b1x3ngaytnh2x" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Full health.png" id="2_rp5j7"]
-[ext_resource type="Texture2D" uid="uid://cy2gfjop5v8ox" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Base Engine - Idle.png" id="3_dq4rf"]
-[ext_resource type="Texture2D" uid="uid://dyleo748337r7" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Base Engine - Powering.png" id="4_mamsa"]
-[ext_resource type="Texture2D" uid="uid://cmlvili2lb7lt" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine/Main Ship - Engines - Base Engine.png" id="5_83gp8"]
+[ext_resource type="Texture2D" uid="uid://b7sjyaqxtrx76" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Very damaged.png" id="4_aq3ld"]
+[ext_resource type="Texture2D" uid="uid://c23wa3ylj7am3" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Slight damage.png" id="5_vyctg"]
+[ext_resource type="PackedScene" uid="uid://dwkimkd752wjt" path="res://Assets/Characters/Player/Ship/ship_engine.tscn" id="6_45hn6"]
+[ext_resource type="Texture2D" uid="uid://cstvx72ancmoc" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Auto Cannon.png" id="9_a2bjx"]
+[ext_resource type="Texture2D" uid="uid://v005h2u4mqrf" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Big Space Gun.png" id="10_e1ncr"]
+[ext_resource type="Texture2D" uid="uid://bv33s2ht70vp8" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Rockets.png" id="11_vagkw"]
+[ext_resource type="Texture2D" uid="uid://2badc73ylgad" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Zapper.png" id="12_s2ahn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5s1p5"]
 radius = 20.0
 height = 42.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gdqn"]
-atlas = ExtResource("3_dq4rf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cljy"]
+atlas = ExtResource("9_a2bjx")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1t5k"]
-atlas = ExtResource("3_dq4rf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn6i1"]
+atlas = ExtResource("9_a2bjx")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_64yuc"]
-atlas = ExtResource("3_dq4rf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q563d"]
+atlas = ExtResource("9_a2bjx")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m01ki"]
-atlas = ExtResource("4_mamsa")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kwy6s"]
-atlas = ExtResource("4_mamsa")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4r8s"]
-atlas = ExtResource("4_mamsa")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvimj"]
-atlas = ExtResource("4_mamsa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_amtlv"]
+atlas = ExtResource("9_a2bjx")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ewofo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j15m"]
+atlas = ExtResource("9_a2bjx")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pn16"]
+atlas = ExtResource("9_a2bjx")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k84ta"]
+atlas = ExtResource("9_a2bjx")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxi5r"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajj05"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vi1j"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5id1a"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ihqp"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_forj8"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gvfv"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbws3"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s76iw"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27mrg"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gwaw"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4als"]
+atlas = ExtResource("10_e1ncr")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uthu0"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhnk8"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72ys8"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58men"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16hph"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lxo6"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hxps"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbhir"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3akp5"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2k3c"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86jp5"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvud6"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y6qj"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(576, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npru4"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4prij"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(672, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl44i"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su72a"]
+atlas = ExtResource("11_vagkw")
+region = Rect2(768, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv8f5"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgt1k"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f3kf"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tohx"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pjkd"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdxv1"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwagc"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3c0m"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm1lc"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34pg0"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yihfu"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha73q"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drl0r"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(576, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5x1o"]
+atlas = ExtResource("12_s2ahn")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1d6c8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3gdqn")
+"texture": SubResource("AtlasTexture_5cljy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e1t5k")
+"texture": SubResource("AtlasTexture_wn6i1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_64yuc")
+"texture": SubResource("AtlasTexture_q563d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amtlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j15m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pn16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k84ta")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"Auto Cannon",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m01ki")
+"texture": SubResource("AtlasTexture_nxi5r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kwy6s")
+"texture": SubResource("AtlasTexture_ajj05")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w4r8s")
+"texture": SubResource("AtlasTexture_2vi1j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvimj")
+"texture": SubResource("AtlasTexture_5id1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ihqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_forj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gvfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbws3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s76iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27mrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gwaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4als")
 }],
 "loop": true,
-"name": &"Powering",
+"name": &"Big Space Gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uthu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhnk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72ys8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58men")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16hph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lxo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hxps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbhir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3akp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2k3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86jp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvud6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y6qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npru4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4prij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl44i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su72a")
+}],
+"loop": true,
+"name": &"Rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv8f5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgt1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f3kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tohx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pjkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdxv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwagc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3c0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm1lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34pg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yihfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha73q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drl0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5x1o")
+}],
+"loop": true,
+"name": &"Zapper",
 "speed": 5.0
 }]
 
-[sub_resource type="AnimationRootNode" id="AnimationRootNode_pbxid"]
+[sub_resource type="Animation" id="Animation_18mu0"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship Engine/Base/Base Engine Thrusters:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship Engine/Base/Base Engine Thrusters:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_uupg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship Engine/Base/Base Engine Thrusters:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_78ncy"]
+resource_name = "Thrusting"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship Engine/Base/Base Engine Thrusters:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Powering"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship Engine/Base/Base Engine Thrusters:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Powering"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ship Engine/Big Pulse/Big Pulse Engine Thrusters:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Powering"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ship Engine/Burst/Burst Engine Thrusters:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Powering"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Engine/Supercharged/Supercharged Engine Thrusters:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bk0m4"]
+_data = {
+"Idle": SubResource("Animation_18mu0"),
+"RESET": SubResource("Animation_uupg3"),
+"Thrusting": SubResource("Animation_78ncy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7byoa"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqpj4"]
+animation = &"Thrusting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dimb"]
+advance_mode = 2
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hk461"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_py6pm"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nkml0"]
+states/End/position = Vector2(1036, 117)
+states/Idle/node = SubResource("AnimationNodeAnimation_7byoa")
+states/Idle/position = Vector2(427, 117)
+states/Start/position = Vector2(231, 117)
+states/Thrusting/node = SubResource("AnimationNodeAnimation_gqpj4")
+states/Thrusting/position = Vector2(688, 117)
+transitions = ["Idle", "Thrusting", SubResource("AnimationNodeStateMachineTransition_8dimb"), "Thrusting", "Idle", SubResource("AnimationNodeStateMachineTransition_hk461"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_py6pm")]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -81,19 +719,39 @@ script = ExtResource("1_q22qg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5s1p5")
 
-[node name="SpriteShip2D" type="Sprite2D" parent="."]
+[node name="Ship" type="Node2D" parent="."]
+script = ExtResource("2_mbik0")
+
+[node name="Full Health" type="Sprite2D" parent="Ship"]
 texture = ExtResource("2_rp5j7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ewofo")
-animation = &"Powering"
-autoplay = "Idle"
+[node name="Slight Damage" type="Sprite2D" parent="Ship"]
+visible = false
+texture = ExtResource("5_vyctg")
 
-[node name="SpriteShipEngine2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_83gp8")
+[node name="Damaged" type="Sprite2D" parent="Ship"]
+visible = false
+texture = ExtResource("2_i2nlv")
+
+[node name="Very Damaged" type="Sprite2D" parent="Ship"]
+visible = false
+texture = ExtResource("4_aq3ld")
+
+[node name="Ship Engine" parent="." instance=ExtResource("6_45hn6")]
+
+[node name="Ship Weapons" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1d6c8")
+animation = &"Auto Cannon"
+frame_progress = 0.38934
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bk0m4")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationRootNode_pbxid")
+tree_root = SubResource("AnimationNodeStateMachine_nkml0")
 anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/idle = true
+parameters/conditions/is_moving = false

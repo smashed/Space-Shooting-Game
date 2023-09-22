@@ -1,12 +1,19 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class player : CharacterBody2D
 {
 	const float Speed = 600.0f;
-	//@onready var anim = get_node("AnimationPlayer")
+	AnimationTree animationTree;
 
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+        animationTree = GetNode("AnimationTree") as AnimationTree;
+		
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -20,11 +27,15 @@ public partial class player : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			velocity = direction * Speed;
+			animationTree.Set("parameters/conditions/is_moving", true);
+			animationTree.Set("parameters/conditions/idle", false);
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+			animationTree.Set("parameters/conditions/idle", true);
+			animationTree.Set("parameters/conditions/is_moving", false);
 		}
 
 		Velocity = velocity;

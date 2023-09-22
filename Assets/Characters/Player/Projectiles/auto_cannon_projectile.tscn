@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmst35j7c1da6"]
+
+[ext_resource type="Texture2D" uid="uid://cbg5bs2nyi1dl" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon Projectiles/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_vh4ys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6awh7"]
+atlas = ExtResource("1_vh4ys")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n5cg"]
+atlas = ExtResource("1_vh4ys")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28pxx"]
+atlas = ExtResource("1_vh4ys")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkpp5"]
+atlas = ExtResource("1_vh4ys")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqcv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6awh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n5cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28pxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkpp5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbg55"]
+radius = 6.0
+height = 20.0
+
+[node name="AutoCannonProjectile" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yqcv8")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_bbg55")

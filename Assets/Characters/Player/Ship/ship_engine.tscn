@@ -1,0 +1,363 @@
+[gd_scene load_steps=54 format=3 uid="uid://dwkimkd752wjt"]
+
+[ext_resource type="Script" path="res://Assets/Characters/Player/Ship/ship_engine.cs" id="1_t8svr"]
+[ext_resource type="Texture2D" uid="uid://cy2gfjop5v8ox" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Base Engine - Idle.png" id="2_pt7gl"]
+[ext_resource type="Texture2D" uid="uid://dyleo748337r7" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Base Engine - Powering.png" id="3_s6uea"]
+[ext_resource type="Texture2D" uid="uid://cmlvili2lb7lt" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine/Main Ship - Engines - Base Engine.png" id="4_4s3cy"]
+[ext_resource type="Texture2D" uid="uid://bouk52ao5n2v2" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Big Pulse Engine - Idle.png" id="5_elh0p"]
+[ext_resource type="Texture2D" uid="uid://d0arw6uep2o5c" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Big Pulse Engine - Powering.png" id="6_tbaoi"]
+[ext_resource type="Texture2D" uid="uid://ci8crmh6gik1w" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine/Main Ship - Engines - Big Pulse Engine.png" id="7_n0jr2"]
+[ext_resource type="Texture2D" uid="uid://c0v3ankrqupca" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Burst Engine - Idle.png" id="8_xgbyp"]
+[ext_resource type="Texture2D" uid="uid://dy04dd15vmpr7" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Burst Engine - Powering.png" id="9_md71p"]
+[ext_resource type="Texture2D" uid="uid://ca2u5b1iskti6" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine/Main Ship - Engines - Burst Engine.png" id="10_5fw3v"]
+[ext_resource type="Texture2D" uid="uid://dbr16fjryhl4l" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Supercharged Engine - Idle.png" id="11_yj13b"]
+[ext_resource type="Texture2D" uid="uid://2t2py5q337pq" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine Effects/Main Ship - Engines - Supercharged Engine - Powering.png" id="12_mdelj"]
+[ext_resource type="Texture2D" uid="uid://cfq5kh5u6fbve" path="res://Assets/Sprites/Characters/Player/Main Ship/Engine/Main Ship - Engines - Supercharged Engine.png" id="13_o482e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubb7x"]
+atlas = ExtResource("2_pt7gl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayh28"]
+atlas = ExtResource("2_pt7gl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuxrf"]
+atlas = ExtResource("2_pt7gl")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dih8t"]
+atlas = ExtResource("3_s6uea")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uxv6"]
+atlas = ExtResource("3_s6uea")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rajgy"]
+atlas = ExtResource("3_s6uea")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cv7i"]
+atlas = ExtResource("3_s6uea")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jers3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubb7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayh28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuxrf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dih8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uxv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rajgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cv7i")
+}],
+"loop": true,
+"name": &"Powering",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmdoe"]
+atlas = ExtResource("5_elh0p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y057n"]
+atlas = ExtResource("5_elh0p")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iqwu"]
+atlas = ExtResource("5_elh0p")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eew0o"]
+atlas = ExtResource("5_elh0p")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfu6v"]
+atlas = ExtResource("6_tbaoi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5kwo"]
+atlas = ExtResource("6_tbaoi")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jduqm"]
+atlas = ExtResource("6_tbaoi")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypswr"]
+atlas = ExtResource("6_tbaoi")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7xsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmdoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y057n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iqwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eew0o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfu6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5kwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jduqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypswr")
+}],
+"loop": true,
+"name": &"Powering",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj05c"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t47t1"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3grfy"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oaad"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn2t"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g44dd"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anbu2"]
+atlas = ExtResource("8_xgbyp")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n6ls"]
+atlas = ExtResource("9_md71p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o24nx"]
+atlas = ExtResource("9_md71p")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgyg7"]
+atlas = ExtResource("9_md71p")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seq2d"]
+atlas = ExtResource("9_md71p")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8av5y"]
+atlas = ExtResource("9_md71p")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqyjq"]
+atlas = ExtResource("9_md71p")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3r3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj05c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t47t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3grfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asn2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g44dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anbu2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n6ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o24nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgyg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8av5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqyjq")
+}],
+"loop": true,
+"name": &"Powering",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccqdi"]
+atlas = ExtResource("11_yj13b")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klst7"]
+atlas = ExtResource("11_yj13b")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s0n3"]
+atlas = ExtResource("11_yj13b")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6y0"]
+atlas = ExtResource("11_yj13b")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lik57"]
+atlas = ExtResource("12_mdelj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjbv"]
+atlas = ExtResource("12_mdelj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1bi1"]
+atlas = ExtResource("12_mdelj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch60i"]
+atlas = ExtResource("12_mdelj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yx7n1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccqdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klst7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw6y0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lik57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpjbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1bi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch60i")
+}],
+"loop": true,
+"name": &"Powering",
+"speed": 5.0
+}]
+
+[node name="Ship Engine" type="Node2D"]
+script = ExtResource("1_t8svr")
+
+[node name="Base" type="Node2D" parent="."]
+
+[node name="Base Engine Thrusters" type="AnimatedSprite2D" parent="Base"]
+sprite_frames = SubResource("SpriteFrames_jers3")
+animation = &"Powering"
+
+[node name="Base Engine" type="Sprite2D" parent="Base"]
+texture = ExtResource("4_4s3cy")
+
+[node name="Big Pulse" type="Node2D" parent="."]
+visible = false
+
+[node name="Big Pulse Engine Thrusters" type="AnimatedSprite2D" parent="Big Pulse"]
+sprite_frames = SubResource("SpriteFrames_o7xsg")
+animation = &"Powering"
+
+[node name="Big Pulse Engine" type="Sprite2D" parent="Big Pulse"]
+texture = ExtResource("7_n0jr2")
+
+[node name="Burst" type="Node2D" parent="."]
+visible = false
+
+[node name="Burst Engine Thrusters" type="AnimatedSprite2D" parent="Burst"]
+sprite_frames = SubResource("SpriteFrames_d3r3c")
+animation = &"Idle"
+frame_progress = 0.807637
+
+[node name="Burst Engine" type="Sprite2D" parent="Burst"]
+texture = ExtResource("10_5fw3v")
+
+[node name="Supercharged" type="Node2D" parent="."]
+visible = false
+
+[node name="Supercharged Engine Thrusters" type="AnimatedSprite2D" parent="Supercharged"]
+sprite_frames = SubResource("SpriteFrames_yx7n1")
+animation = &"Idle"
+frame_progress = 0.481085
+
+[node name="Supercharged Engine" type="Sprite2D" parent="Supercharged"]
+texture = ExtResource("13_o482e")
