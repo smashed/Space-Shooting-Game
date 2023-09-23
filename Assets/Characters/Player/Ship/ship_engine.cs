@@ -6,7 +6,7 @@ public partial class ship_engine : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SetRandomShipEngine();
+		SetEngine(Engine.Base);
 	}
 
 	public void SetEngine(Engine shipEngine)

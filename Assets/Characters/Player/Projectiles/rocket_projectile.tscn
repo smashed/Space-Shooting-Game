@@ -36,13 +36,19 @@ animations = [{
 size = Vector2(5.5, 16)
 
 [node name="RocketProjectile" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_1iicj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ow5j2")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_nrqdb")
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+one_shot = true
+autostart = true

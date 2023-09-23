@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dfi1je071bwdp"]
+[gd_scene load_steps=79 format=3 uid="uid://dfi1je071bwdp"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/player.cs" id="1_q22qg"]
 [ext_resource type="Texture2D" uid="uid://bjfjv4u2e80we" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Damaged.png" id="2_i2nlv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cstvx72ancmoc" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Auto Cannon.png" id="9_a2bjx"]
 [ext_resource type="Texture2D" uid="uid://v005h2u4mqrf" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Big Space Gun.png" id="10_e1ncr"]
 [ext_resource type="Texture2D" uid="uid://bv33s2ht70vp8" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Rockets.png" id="11_vagkw"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Ship/ship_weapons.cs" id="12_awbmg"]
 [ext_resource type="Texture2D" uid="uid://2badc73ylgad" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Zapper.png" id="12_s2ahn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5s1p5"]
@@ -419,7 +420,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Ship Weapons")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -777,7 +778,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Ship Weapons")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -819,13 +820,16 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Ship Weapons")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"FireRocketProjectile"
+}, {
 "args": [],
 "method": &"FireRocketProjectile"
 }, {
@@ -873,7 +877,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Ship Weapons")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -894,12 +898,12 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bk0m4"]
 _data = {
 "AutoCannonProjectile": SubResource("Animation_il1bd"),
-"BigSpaceGun": SubResource("Animation_fqy2f"),
+"BigSpaceGunProjectile": SubResource("Animation_fqy2f"),
 "Idle": SubResource("Animation_18mu0"),
 "RESET": SubResource("Animation_uupg3"),
-"Rockets": SubResource("Animation_mtn86"),
+"RocketProjectile": SubResource("Animation_mtn86"),
 "Thrusting": SubResource("Animation_78ncy"),
-"Zapper": SubResource("Animation_eymmn")
+"ZapperProjectile": SubResource("Animation_eymmn")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7byoa"]
@@ -961,6 +965,7 @@ texture = ExtResource("4_aq3ld")
 [node name="Ship Weapons" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1d6c8")
 animation = &"Auto Cannon"
+script = ExtResource("12_awbmg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

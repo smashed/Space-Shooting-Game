@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://fjwkteeff04g"]
+[gd_scene load_steps=6 format=3 uid="uid://fjwkteeff04g"]
 
 [ext_resource type="Script" path="res://Scenes/Main.cs" id="1_1laid"]
 [ext_resource type="PackedScene" uid="uid://rkihwpy05b3m" path="res://Assets/Environment/Background/BG.tscn" id="2_30pqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpgkt"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 1, 0, 0.392157)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30mge"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.607843, 0, 0.784314)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uwck"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.392157, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1laid")
@@ -18,9 +57,27 @@ offset_right = 485.0
 offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.392157, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.607843, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.607843, 0, 1)
 theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_wpgkt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_30mge")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6uwck")
 text = "Start"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_30pqy")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 83.0
+offset_top = 908.0
+offset_right = 637.0
+offset_bottom = 982.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Press Enter or Spacebar key to start"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

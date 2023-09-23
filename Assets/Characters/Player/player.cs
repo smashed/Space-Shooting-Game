@@ -9,38 +9,30 @@ public partial class player : CharacterBody2D
 	float speed = 600.0f;
 	AnimationTree animationTree;
 	AnimationPlayer animationPlayer;
-	AnimatedSprite2D shipWeapon;
-
-	PackedScene projectile;
-	bool autoCannonShot = false;
-	int rockets = 6;
-	string autoCannonProjectile = "res://Assets/Characters/Player/Projectiles/auto_cannon_projectile.tscn";
-	string bigSpaceGunProjectile = "res://Assets/Characters/Player/Projectiles/big_space_gun_projectile.tscn";
-	string rocketProjectile = "res://Assets/Characters/Player/Projectiles/rocket_projectile.tscn";
-	string zapperProjectile = "res://Assets/Characters/Player/Projectiles/zapper_projectile.tscn";
-	string loadProjectile;
-	string fireProjectile;
+	ship_weapons shipWeapon;
+	ship_engine shipEngine;
 
     public override void _Ready()
     {
         animationTree = GetNode("AnimationTree") as AnimationTree;
 		animationPlayer = GetNode("AnimationPlayer") as AnimationPlayer;
-		shipWeapon = GetNode("Ship Weapons") as AnimatedSprite2D;
-		SetWeapon(weapon);
-		projectile = ResourceLoader.Load<PackedScene>(loadProjectile);
+		shipWeapon = GetNode("Ship Weapons") as ship_weapons;
+		shipEngine = GetNode("Ship Engine") as ship_engine;
     }
 
     public override void _PhysicsProcess(double delta)
 	{
+		Move();
+		Fire();
+		ShipEngine();
+		ShipWeapon();
+	}
+
+	void Move() 
+	{
 		Vector2 velocity = Velocity;
 
-		// Handle Shoot.
-		if (Input.IsActionJustPressed("Fire"))
-			animationPlayer.Play(fireProjectile);
-			
-
 		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		if (direction != Vector2.Zero)
 		{
@@ -60,99 +52,36 @@ public partial class player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	public void FireAutoCannonProjectile()
+	void Fire()
 	{
-		var bullet = (Node2D)projectile.Instantiate();
-		var shotPos = autoCannonShot ? 27 : -27;
-		autoCannonShot = autoCannonShot ? false : true;
-		GetNode("/root/Game").AddChild(bullet);
-		bullet.GlobalPosition = GlobalPosition + new Vector2(shotPos, 0);
+		// Handle Shoot.
+		if (Input.IsActionJustPressed("Fire"))
+			animationPlayer.Play(shipWeapon.fireProjectile);
 	}
 
-	public void FireBigSpaceGunProjectile() 
+	void ShipWeapon()
 	{
-		var bullet = (Node2D)projectile.Instantiate();
-		GetNode("/root/Game").AddChild(bullet);
-		bullet.GlobalPosition = GlobalPosition;
+		if (Input.IsActionJustPressed("Weapon 1"))
+			shipWeapon.SetWeapon(Weapon.AutoCannon);
+		if (Input.IsActionJustPressed("Weapon 2"))
+			shipWeapon.SetWeapon(Weapon.BigSpaceGun);
+		if (Input.IsActionJustPressed("Weapon 3"))
+			shipWeapon.SetWeapon(Weapon.Rockets);
+		if (Input.IsActionJustPressed("Weapon 4"))
+			shipWeapon.SetWeapon(Weapon.Zapper);
 	}
 
-	public void FireRocketProjectile() 
+	void ShipEngine()
 	{
-		var bullet = (Node2D)projectile.Instantiate();
-		var shotPosX = -19.5f;
-		var shotPosY = 12f;
-
-		switch(rockets) 
-		{
-			case 6:
-				shotPosX = -19.5f;
-				shotPosY = 0.0f;
-				break; 
-			case 5:
-				shotPosX = 19.5f;
-				shotPosY = 0.0f;
-				break;
-			case 4:
-				shotPosX = -31.5f;
-				shotPosY = 12.0f;
-				break; 
-			case 3:
-				shotPosX = 31.5f;
-				shotPosY = 12.0f;
-				break;
-			case 2:
-				shotPosX = -43.5f;
-				shotPosY = 24.0f;
-				break; 
-			case 1:
-				shotPosX = 43.5f;
-				shotPosY = 24.0f;
-				rockets = 6; // refill
-				break;
-			default:
-				break;
-		}
-		GetNode("/root/Game").AddChild(bullet);
-		bullet.GlobalPosition = GlobalPosition + new Vector2(shotPosX, shotPosY);
+		if (Input.IsActionJustPressed("Engine 1"))
+			shipEngine.SetEngine(Engine.Base);
+		if (Input.IsActionJustPressed("Engine 2"))
+			shipEngine.SetEngine(Engine.BigPulse);
+		if (Input.IsActionJustPressed("Engine 3"))
+			shipEngine.SetEngine(Engine.Burst);
+		if (Input.IsActionJustPressed("Engine 4"))
+			shipEngine.SetEngine(Engine.Supercharged);
 	}
 
-	public void FireZapperProjectile() 
-	{
-		var bullet1 = (Node2D)projectile.Instantiate();
-		var bullet2 = (Node2D)projectile.Instantiate();
-		var shotPosX1 = -22.5f;
-		var shotPosX2 = 22.5f;
-		var shotPosY = -46f;
-		GetNode("/root/Game").AddChild(bullet1);
-		GetNode("/root/Game").AddChild(bullet2);
-		bullet1.GlobalPosition = GlobalPosition + new Vector2(shotPosX1, shotPosY);
-		bullet2.GlobalPosition = GlobalPosition + new Vector2(shotPosX2, shotPosY);
-	}
-
-	void SetWeapon(Weapon weapon) 
-	{
-		switch (weapon) 
-		{
-			case Weapon.BigSpaceGun:
-				shipWeapon.Animation = "Big Space Gun";
-				loadProjectile = bigSpaceGunProjectile;
-				fireProjectile = "BigSpaceGun";
-				return;
-			case Weapon.Rockets:
-				shipWeapon.Animation = "Rockets";
-				loadProjectile = rocketProjectile;
-				fireProjectile = "Rockets";
-				return;
-			case Weapon.Zapper:
-				shipWeapon.Animation = "Zapper";
-				loadProjectile = zapperProjectile;
-				fireProjectile = "Zapper";
-				return;
-			default:
-				shipWeapon.Animation = "Auto Cannon";
-				loadProjectile = autoCannonProjectile;
-				fireProjectile = "AutoCannonProjectile";
-				return;
-		}
-	}
+	
 }

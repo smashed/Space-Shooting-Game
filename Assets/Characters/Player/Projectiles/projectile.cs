@@ -1,23 +1,25 @@
 using Godot;
 using System;
 
-public partial class Main : Node2D
+public partial class projectile : Area2D
 {
+	float _projectile_speed = 2000.0f;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var timer = GetNode<Timer>("Timer");
+		timer.Timeout += OnTimerTimeout;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("Start")) {
-			_on_play_button_pressed();
-		}
+		Position -= new Vector2(0, _projectile_speed * (float)delta);
 	}
 
-	private void _on_play_button_pressed()
+	void OnTimerTimeout()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
+		QueueFree();
 	}
 }

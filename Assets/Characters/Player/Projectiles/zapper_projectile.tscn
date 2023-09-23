@@ -75,6 +75,7 @@ script = ExtResource("1_el5od")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uyvvy")
+autoplay = "default"
 frame = 4
 frame_progress = 0.287932
 
@@ -82,3 +83,6 @@ frame_progress = 0.287932
 shape = SubResource("RectangleShape2D_p64nw")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
