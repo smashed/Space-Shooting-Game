@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://c17nxwucfycq2"]
+
+[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/zapper_projectile.cs" id="1_el5od"]
+[ext_resource type="Texture2D" uid="uid://dvult071unqla" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon Projectiles/Main ship weapon - Projectile - Zapper.png" id="1_nug8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaq6a"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5vm8"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3qdx"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us37t"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwv5w"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adkv3"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfkqa"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqcfb"]
+atlas = ExtResource("1_nug8c")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyvvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaq6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5vm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3qdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us37t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwv5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adkv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfkqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqcfb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p64nw"]
+size = Vector2(8, 32)
+
+[node name="ZapperProjectile" type="Area2D"]
+script = ExtResource("1_el5od")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uyvvy")
+frame = 4
+frame_progress = 0.287932
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p64nw")
+
+[node name="Timer" type="Timer" parent="."]

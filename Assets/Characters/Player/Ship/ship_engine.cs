@@ -9,21 +9,21 @@ public partial class ship_engine : Node2D
 		SetRandomShipEngine();
 	}
 
-	public void SetEngine(ShipEngine shipEngine)
+	public void SetEngine(Engine shipEngine)
 	{
 		switch (shipEngine)
 		{
-			case ShipEngine.BigPulse:
+			case Engine.BigPulse:
 				HideEngines();
 				GetNode<Node2D>("Big Pulse").Show();
 				break;
 
-			case ShipEngine.Burst:
+			case Engine.Burst:
 				HideEngines();
 				GetNode<Node2D>("Burst").Show();
 				break;
 
-			case ShipEngine.Supercharged:
+			case Engine.Supercharged:
 				HideEngines();
 				GetNode<Node2D>("Supercharged").Show();
 				break;
@@ -42,16 +42,8 @@ public partial class ship_engine : Node2D
 	}
 
 	private void SetRandomShipEngine() {
-		Array values = Enum.GetValues(typeof(ShipEngine));
+		Array values = Enum.GetValues(typeof(Engine));
 		var random = new Random();
-		SetEngine((ShipEngine)values.GetValue(random.Next(values.Length)));
+		SetEngine((Engine)values.GetValue(random.Next(values.Length)));
 	}
-}
-
-public enum ShipEngine 
-{
-	Base,
-	BigPulse,
-	Burst,
-	Supercharged
 }
