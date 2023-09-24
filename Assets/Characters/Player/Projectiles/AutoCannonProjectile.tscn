@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmst35j7c1da6"]
+[gd_scene load_steps=10 format=3 uid="uid://djpqe3vrrwh2d"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/auto_cannon_projectile.cs" id="1_4ox2o"]
-[ext_resource type="Texture2D" uid="uid://cbg5bs2nyi1dl" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_vh4ys"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/AutoCannonProjectile.cs" id="1_trwmy"]
+[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/Player/Projectiles/ProjectileComponent.tscn" id="2_0kl0l"]
+[ext_resource type="Texture2D" uid="uid://cbg5bs2nyi1dl" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Auto cannon bullet.png" id="3_883w6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6awh7"]
-atlas = ExtResource("1_vh4ys")
+atlas = ExtResource("3_883w6")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n5cg"]
-atlas = ExtResource("1_vh4ys")
+atlas = ExtResource("3_883w6")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28pxx"]
-atlas = ExtResource("1_vh4ys")
+atlas = ExtResource("3_883w6")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkpp5"]
-atlas = ExtResource("1_vh4ys")
+atlas = ExtResource("3_883w6")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yqcv8"]
@@ -44,7 +45,12 @@ radius = 6.0
 height = 20.0
 
 [node name="AutoCannonProjectile" type="Area2D"]
-script = ExtResource("1_4ox2o")
+script = ExtResource("1_trwmy")
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("2_0kl0l")]
+
+[node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
+position = Vector2(0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yqcv8")
@@ -54,8 +60,4 @@ autoplay = "default"
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_bbg55")
 
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 2.0
-one_shot = true
-autostart = true
+[editable path="ProjectileComponent"]

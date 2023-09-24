@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cd0hb5afxw8b7"]
 
-[ext_resource type="PackedScene" uid="uid://dfi1je071bwdp" path="res://Assets/Characters/Player/player.tscn" id="1_0ogfu"]
+[ext_resource type="PackedScene" uid="uid://dfi1je071bwdp" path="res://Assets/Characters/Player/Player.tscn" id="1_0ogfu"]
 [ext_resource type="PackedScene" uid="uid://cflgc5dq572o8" path="res://Assets/Environment/Background/BG.tscn" id="2_xd43v"]
-[ext_resource type="PackedScene" uid="uid://2x0meprjt2ec" path="res://Assets/Characters/Enemies/Fleet1/klaed_scout.tscn" id="3_fpo6x"]
+[ext_resource type="PackedScene" uid="uid://vwe4nakxnld2" path="res://Assets/Characters/Enemies/Fleet1/KlaedScout.tscn" id="3_fpo6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbpab"]
 size = Vector2(761, 20)
@@ -48,5 +48,20 @@ limit_top = -640
 limit_right = 360
 limit_bottom = 640
 
-[node name="Kla\'ed Scout" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(162, 925)
+[node name="KlaedScout" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(168, 925)
+
+[node name="KlaedScout2" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(589, 861)
+
+[node name="KlaedScout3" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(348, 841)
+
+[node name="KlaedScout4" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(173, 726)
+
+[node name="KlaedScout5" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(521, 701)
+
+[node name="KlaedScout6" parent="." instance=ExtResource("3_fpo6x")]
+position = Vector2(402, 562)

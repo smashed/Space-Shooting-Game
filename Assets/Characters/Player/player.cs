@@ -1,15 +1,15 @@
 using Godot;
 using System;
 
-public partial class player : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 	public Weapon weapon = Weapon.AutoCannon;
 
 	public float speed = 600.0f;
 	AnimationTree animationTree;
 	AnimationPlayer animationPlayer;
-	ship_weapons shipWeapon;
-	ship_engine shipEngine;
+	ShipWeapons shipWeapon;
+	ShipEngine shipEngine;
 
 	bool isCollision;
 	Timer bounceTimer;
@@ -18,11 +18,11 @@ public partial class player : CharacterBody2D
 
     public override void _Ready()
     {
-        animationTree = GetNode("AnimationTree") as AnimationTree;
-		animationPlayer = GetNode("AnimationPlayer") as AnimationPlayer;
-		shipWeapon = GetNode("Ship Weapons") as ship_weapons;
-		shipEngine = GetNode("Ship Engine") as ship_engine;
-		background = GetNode("/root/Game/ParallaxBackground/TransparentBG") as ParallaxLayer;
+        animationTree = GetNode<AnimationTree>("AnimationTree");
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		shipWeapon = GetNode<ShipWeapons>("Ship Weapons");
+		shipEngine = GetNode<ShipEngine>("Ship Engine");
+		background = GetNode<ParallaxLayer>("/root/Game/ParallaxBackground/TransparentBG");
 		bounceTimer = GetNode<Timer>("BounceTimer");
     	bounceTimer.Timeout += OnBounceTimerTimeout;
     }

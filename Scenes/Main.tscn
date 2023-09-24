@@ -80,4 +80,4 @@ text = "Press Enter or Spacebar key to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]

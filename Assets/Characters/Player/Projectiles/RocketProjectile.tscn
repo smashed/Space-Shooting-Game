@@ -1,18 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmgonb782mbvv"]
+[gd_scene load_steps=10 format=3 uid="uid://dmgonb782mbvv"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/rocket_projectile.cs" id="1_1iicj"]
-[ext_resource type="Texture2D" uid="uid://dsceifu2ds41u" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Rocket.png" id="1_61nfm"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/RocketProjectile.cs" id="1_dpp03"]
+[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/Player/Projectiles/ProjectileComponent.tscn" id="2_rnnv4"]
+[ext_resource type="Texture2D" uid="uid://dsceifu2ds41u" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Rocket.png" id="3_yqjn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxjsr"]
+size = Vector2(5.83333, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khmf3"]
-atlas = ExtResource("1_61nfm")
+atlas = ExtResource("3_yqjn3")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui5nt"]
-atlas = ExtResource("1_61nfm")
+atlas = ExtResource("3_yqjn3")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ox46g"]
-atlas = ExtResource("1_61nfm")
+atlas = ExtResource("3_yqjn3")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ow5j2"]
@@ -37,7 +41,13 @@ size = Vector2(5.5, 16)
 
 [node name="RocketProjectile" type="Area2D"]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_1iicj")
+script = ExtResource("1_dpp03")
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("2_rnnv4")]
+
+[node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_dxjsr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ow5j2")
@@ -47,8 +57,4 @@ autoplay = "default"
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_nrqdb")
 
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 2.0
-one_shot = true
-autostart = true
+[editable path="ProjectileComponent"]

@@ -1,19 +1,22 @@
 using Godot;
 using System;
 
-public partial class klaed_scout : CharacterBody2D
+public partial class KlaedScout : CharacterBody2D
 {
 	public float speed = 600.0f;
 	bool isCollision;
 	Timer bounceTimer;
+	AnimationPlayer animationPlayer;
 
 	public override void _Ready()
 	{
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animationPlayer.AnimationFinished += OnAnimationFinished;
 		bounceTimer = GetNode<Timer>("BounceTimer");
     	bounceTimer.Timeout += OnBounceTimerTimeout;
 	}
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
@@ -46,5 +49,12 @@ public partial class klaed_scout : CharacterBody2D
 		Velocity = Vector2.Zero;
 	}
 
-	
+	public void Hit() {
+		animationPlayer.Play("Explode", -1, 5);
+	}
+
+	private void OnAnimationFinished(StringName animName)
+    {
+        QueueFree();
+    }
 }

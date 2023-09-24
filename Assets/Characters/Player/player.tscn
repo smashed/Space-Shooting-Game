@@ -1,16 +1,16 @@
 [gd_scene load_steps=79 format=3 uid="uid://dfi1je071bwdp"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Player/player.cs" id="1_q22qg"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Player.cs" id="1_tr3r2"]
 [ext_resource type="Texture2D" uid="uid://bjfjv4u2e80we" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Damaged.png" id="2_i2nlv"]
 [ext_resource type="Script" path="res://Assets/Characters/Player/Ship/Ship.cs" id="2_mbik0"]
 [ext_resource type="Texture2D" uid="uid://b1x3ngaytnh2x" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Full health.png" id="2_rp5j7"]
 [ext_resource type="Texture2D" uid="uid://b7sjyaqxtrx76" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Very damaged.png" id="4_aq3ld"]
 [ext_resource type="Texture2D" uid="uid://c23wa3ylj7am3" path="res://Assets/Sprites/Characters/Player/Main Ship/Base/Main Ship - Base - Slight damage.png" id="5_vyctg"]
-[ext_resource type="PackedScene" uid="uid://dwkimkd752wjt" path="res://Assets/Characters/Player/Ship/ship_engine.tscn" id="6_45hn6"]
+[ext_resource type="PackedScene" uid="uid://dwkimkd752wjt" path="res://Assets/Characters/Player/Ship/ShipEngine.tscn" id="6_45hn6"]
 [ext_resource type="Texture2D" uid="uid://cstvx72ancmoc" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Auto Cannon.png" id="9_a2bjx"]
 [ext_resource type="Texture2D" uid="uid://v005h2u4mqrf" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Big Space Gun.png" id="10_e1ncr"]
 [ext_resource type="Texture2D" uid="uid://bv33s2ht70vp8" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Rockets.png" id="11_vagkw"]
-[ext_resource type="Script" path="res://Assets/Characters/Player/Ship/ship_weapons.cs" id="12_awbmg"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Ship/ShipWeapons.cs" id="12_lk2re"]
 [ext_resource type="Texture2D" uid="uid://2badc73ylgad" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Main Ship - Weapons - Zapper.png" id="12_s2ahn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5s1p5"]
@@ -937,7 +937,7 @@ graph_offset = Vector2(-157, -74)
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 motion_mode = 1
-script = ExtResource("1_q22qg")
+script = ExtResource("1_tr3r2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -966,7 +966,7 @@ texture = ExtResource("4_aq3ld")
 [node name="Ship Weapons" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1d6c8")
 animation = &"Auto Cannon"
-script = ExtResource("12_awbmg")
+script = ExtResource("12_lk2re")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ship_weapons : AnimatedSprite2D
+public partial class ShipWeapons : AnimatedSprite2D
 {
 	public string fireProjectile;
 
@@ -19,10 +19,10 @@ public partial class ship_weapons : AnimatedSprite2D
 	public override void _Ready()
 	{
 		SetWeapon(weapon);
-		autoCannonProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/auto_cannon_projectile.tscn");
-		bigSpaceGunProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/big_space_gun_projectile.tscn");
-		rocketProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/rocket_projectile.tscn");
-		zapperProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/zapper_projectile.tscn");
+		autoCannonProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/AutoCannonProjectile.tscn");
+		bigSpaceGunProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/BigSpaceGunProjectile.tscn");
+		rocketProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/RocketProjectile.tscn");
+		zapperProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/ZapperProjectile.tscn");
 	}
 
 	public void FireAutoCannonProjectile()

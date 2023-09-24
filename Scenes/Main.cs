@@ -12,11 +12,11 @@ public partial class Main : Node2D
 	public override void _Process(double delta)
 	{
 		if (Input.IsActionJustPressed("Start")) {
-			_on_play_button_pressed();
+			OnPlayButtonPressed();
 		}
 	}
 
-	private void _on_play_button_pressed()
+	private void OnPlayButtonPressed()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
 	}

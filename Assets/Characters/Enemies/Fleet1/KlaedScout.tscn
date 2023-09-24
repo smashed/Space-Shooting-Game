@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://2x0meprjt2ec"]
+[gd_scene load_steps=33 format=3 uid="uid://vwe4nakxnld2"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/klaed_scout.cs" id="1_k1ll4"]
+[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/KlaedScout.cs" id="1_8j6rg"]
 [ext_resource type="Texture2D" uid="uid://dixcqauh5qpgy" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Kla'ed - Scout - Base.png" id="2_3i57y"]
 [ext_resource type="Texture2D" uid="uid://dr31ox0jb14i8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Engine Effects/Kla'ed - Scout - Engine.png" id="2_ycugq"]
 [ext_resource type="Texture2D" uid="uid://waocjiseucdl" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Explode/Kla'ed - Scout - Destruction.png" id="3_500sh"]
@@ -281,7 +281,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_qlvk1"]
 resource_name = "Thrusting"
-length = 0.9
+length = 1.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -302,7 +302,7 @@ tracks/1/path = NodePath("Engine:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -315,11 +315,11 @@ _data = {
 "Thrusting": SubResource("Animation_qlvk1")
 }
 
-[node name="Kla\'ed Scout" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Klaed Scout" type="CharacterBody2D" groups=["Enemies"]]
 rotation = 3.14159
 scale = Vector2(3, 3)
 motion_mode = 1
-script = ExtResource("1_k1ll4")
+script = ExtResource("1_8j6rg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -327,13 +327,13 @@ shape = SubResource("CapsuleShape2D_ab4lh")
 
 [node name="Engine" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ug58y")
-autoplay = "default"
 
 [node name="Ship" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fico")
 animation = &"Ship"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Thrusting"
 libraries = {
 "": SubResource("AnimationLibrary_dfder")
 }
