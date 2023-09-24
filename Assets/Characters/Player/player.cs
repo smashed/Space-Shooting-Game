@@ -1,16 +1,20 @@
 using Godot;
 using System;
-using System.Diagnostics;
 
 public partial class player : CharacterBody2D
 {
 	public Weapon weapon = Weapon.AutoCannon;
 
-	float speed = 600.0f;
+	public float speed = 600.0f;
 	AnimationTree animationTree;
 	AnimationPlayer animationPlayer;
 	ship_weapons shipWeapon;
 	ship_engine shipEngine;
+
+	bool isCollision;
+	Timer bounceTimer;
+
+	ParallaxLayer background;
 
     public override void _Ready()
     {
@@ -18,38 +22,62 @@ public partial class player : CharacterBody2D
 		animationPlayer = GetNode("AnimationPlayer") as AnimationPlayer;
 		shipWeapon = GetNode("Ship Weapons") as ship_weapons;
 		shipEngine = GetNode("Ship Engine") as ship_engine;
+		background = GetNode("/root/Game/ParallaxBackground/TransparentBG") as ParallaxLayer;
+		bounceTimer = GetNode<Timer>("BounceTimer");
+    	bounceTimer.Timeout += OnBounceTimerTimeout;
     }
 
     public override void _PhysicsProcess(double delta)
 	{
-		Move();
+		Move(delta);
 		Fire();
 		ShipEngine();
 		ShipWeapon();
 	}
 
-	void Move() 
+	void Move(double delta)
 	{
-		Vector2 velocity = Velocity;
-
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
-		if (direction != Vector2.Zero)
+		if (!isCollision)
+			Velocity = direction * speed;
+
+		if (Velocity > Vector2.Zero || Velocity < Vector2.Zero) //direction != Vector2.Zero)
 		{
-			velocity = direction * speed;
 			animationTree.Set("parameters/conditions/is_moving", true);
 			animationTree.Set("parameters/conditions/idle", false);
+			if (!IsOnWall())
+				background.MotionOffset -= direction;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
-			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
 			animationTree.Set("parameters/conditions/idle", true);
 			animationTree.Set("parameters/conditions/is_moving", false);
 		}
 
-		Velocity = velocity;
 		MoveAndSlide();
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			if (((Node)collision.GetCollider()).IsInGroup("Enemies") )
+			{
+				//GD.Print("I collided with ", ((Node)collision.GetCollider()).GetGroups());
+				Velocity = Velocity.Bounce(collision.GetNormal()) + collision.GetColliderVelocity();
+				Velocity *= 0.6f;
+				isCollision = true;
+				bounceTimer.Start();
+			}
+		}
+
+		// var collision = MoveAndCollide(Velocity * (float)delta);
+		// if (collision != null) 
+		// {
+		// 	GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
+		// 	Velocity = Velocity.Slide(collision.GetNormal());
+		// 	//Velocity = Velocity.Bounce(collision.GetNormal());
+		// }
+
+
 	}
 
 	void Fire()
@@ -83,5 +111,10 @@ public partial class player : CharacterBody2D
 			shipEngine.SetEngine(Engine.Supercharged);
 	}
 
-	
+	public void OnBounceTimerTimeout()
+	{
+		isCollision = false;
+	}
+
+
 }

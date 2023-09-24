@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fjwkteeff04g"]
 
 [ext_resource type="Script" path="res://Scenes/Main.cs" id="1_1laid"]
-[ext_resource type="PackedScene" uid="uid://rkihwpy05b3m" path="res://Assets/Environment/Background/BG.tscn" id="2_30pqy"]
+[ext_resource type="PackedScene" uid="uid://cflgc5dq572o8" path="res://Assets/Environment/Background/BG.tscn" id="2_30pqy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpgkt"]
 bg_color = Color(0, 0, 0, 0.392157)

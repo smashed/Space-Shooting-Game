@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dmgonb782mbvv"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/rocket_projectile.cs" id="1_1iicj"]
-[ext_resource type="Texture2D" uid="uid://dsceifu2ds41u" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon Projectiles/Main ship weapon - Projectile - Rocket.png" id="1_61nfm"]
+[ext_resource type="Texture2D" uid="uid://dsceifu2ds41u" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Rocket.png" id="1_61nfm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khmf3"]
 atlas = ExtResource("1_61nfm")

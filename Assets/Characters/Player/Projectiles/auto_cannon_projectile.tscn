@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dmst35j7c1da6"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/auto_cannon_projectile.cs" id="1_4ox2o"]
-[ext_resource type="Texture2D" uid="uid://cbg5bs2nyi1dl" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon Projectiles/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_vh4ys"]
+[ext_resource type="Texture2D" uid="uid://cbg5bs2nyi1dl" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_vh4ys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6awh7"]
 atlas = ExtResource("1_vh4ys")

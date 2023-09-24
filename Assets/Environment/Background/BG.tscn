@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://rkihwpy05b3m"]
+[gd_scene load_steps=6 format=3 uid="uid://cflgc5dq572o8"]
 
 [ext_resource type="Script" path="res://Assets/Environment/Background/BG.cs" id="1_554xo"]
-[ext_resource type="Texture2D" uid="uid://craqxbo50l71f" path="res://Assets/Sprites/Background.png" id="2_21c0j"]
+[ext_resource type="Texture2D" uid="uid://craqxbo50l71f" path="res://Assets/Sprites/Background/Background.png" id="2_pbg6p"]
 [ext_resource type="Shader" path="res://Assets/Environment/Background/BG.gdshader" id="3_qpc6n"]
+[ext_resource type="Texture2D" uid="uid://c4xawuq5nl7bp" path="res://Assets/Sprites/Background/BackdropBlackLittleSparkTransparent.png" id="3_u4hsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1no64"]
 shader = ExtResource("3_qpc6n")
@@ -12,17 +13,51 @@ shader_parameter/speed_scale = 0.05
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_554xo")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1, 0.7)
 motion_mirroring = Vector2(1536, 1990)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(512, 1024)
-texture = ExtResource("2_21c0j")
+texture = ExtResource("2_pbg6p")
+
+[node name="TransparentBG" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(0, 256)
+texture = ExtResource("3_u4hsh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(0, 768)
+texture = ExtResource("3_u4hsh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(0, 1280)
+texture = ExtResource("3_u4hsh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(512, 256)
+texture = ExtResource("3_u4hsh")
+
+[node name="Sprite2D5" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(512, 768)
+texture = ExtResource("3_u4hsh")
+
+[node name="Sprite2D6" type="Sprite2D" parent="TransparentBG"]
+modulate = Color(0.25098, 0.54902, 0.545098, 1)
+position = Vector2(512, 1280)
+texture = ExtResource("3_u4hsh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_1no64")
 offset_right = 2048.0
 offset_bottom = 2048.0
-texture = ExtResource("2_21c0j")
+texture = ExtResource("2_pbg6p")
 stretch_mode = 1
