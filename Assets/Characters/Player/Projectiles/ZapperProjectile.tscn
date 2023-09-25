@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c17nxwucfycq2"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/ZapperProjectile.cs" id="1_432q2"]
-[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/Player/Projectiles/ProjectileComponent.tscn" id="2_s6ghm"]
+[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/ProjectileComponent.tscn" id="2_s6ghm"]
 [ext_resource type="Texture2D" uid="uid://dvult071unqla" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Zapper.png" id="3_12fw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajiue"]
@@ -78,6 +78,7 @@ size = Vector2(8, 32)
 script = ExtResource("1_432q2")
 
 [node name="projectile" parent="." instance=ExtResource("2_s6ghm")]
+damageAmount = 15.0
 
 [node name="CollisionShape2D" parent="projectile" index="0"]
 shape = SubResource("RectangleShape2D_ajiue")

@@ -3,17 +3,20 @@ using System;
 
 public partial class KlaedScout : CharacterBody2D
 {
-	public float speed = 600.0f;
-	bool isCollision;
-	Timer bounceTimer;
-	AnimationPlayer animationPlayer;
+	[Export] public float speed = 600.0f;
+	[Export] public float collisionDamage = 10.0f;
+	bool _isCollision;
+	Timer _bounceTimer;
+	AnimationPlayer _animationPlayer;
+	HealthComponent _health;
 
 	public override void _Ready()
 	{
-		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		animationPlayer.AnimationFinished += OnAnimationFinished;
-		bounceTimer = GetNode<Timer>("BounceTimer");
-    	bounceTimer.Timeout += OnBounceTimerTimeout;
+		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		_animationPlayer.AnimationFinished += OnAnimationFinished;
+		_bounceTimer = GetNode<Timer>("BounceTimer");
+    	_bounceTimer.Timeout += OnBounceTimerTimeout;
+		_health = GetNode<HealthComponent>("HealthComponent");
 	}
 
     public override void _PhysicsProcess(double delta)
@@ -24,36 +27,27 @@ public partial class KlaedScout : CharacterBody2D
 			var collision = GetSlideCollision(i);
 			if (((Node)collision.GetCollider()).Name == "Player")
 			{
-				//GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
-				//GD.Print("Velocity " + Velocity.Bounce(collision.GetNormal()));
+				_health.Damage(collisionDamage);
 				Velocity = Velocity.Bounce(collision.GetNormal()) + collision.GetColliderVelocity();
 				Velocity *= 0.6f;
-				isCollision = true;
-				bounceTimer.Start();
+				_isCollision = true;
+				_bounceTimer.Start();
 			}
 		}
-		
-
-		// var collision = MoveAndCollide(Velocity * (float)delta);
-		// if (collision != null) 
-		// {
-		// 	GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
-		// 	Velocity = Velocity.Bounce(collision.GetNormal()) + collision.GetColliderVelocity();
-		// }
-            
 	}
 
-	public void OnBounceTimerTimeout()
+	void OnBounceTimerTimeout()
 	{
-		isCollision = false;
+		_isCollision = false;
 		Velocity = Vector2.Zero;
 	}
 
-	public void Hit() {
-		animationPlayer.Play("Explode", -1, 5);
+	void OnHealthDepleted() {
+		SetCollisionLayerValue(1, false);
+		_animationPlayer.Play("Explode", -1, 5);
 	}
 
-	private void OnAnimationFinished(StringName animName)
+	void OnAnimationFinished(StringName animName)
     {
         QueueFree();
     }

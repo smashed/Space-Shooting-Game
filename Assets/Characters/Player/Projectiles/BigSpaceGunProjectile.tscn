@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://crrhu3gb43jkp"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/BigSpaceGunProjectile.cs" id="1_qkrs2"]
-[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/Player/Projectiles/ProjectileComponent.tscn" id="2_t88vw"]
+[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/ProjectileComponent.tscn" id="2_t88vw"]
 [ext_resource type="Texture2D" uid="uid://drpvqiig1po15" path="res://Assets/Sprites/Characters/Player/Main Ship/Weapon/Weapon Projectiles/Main ship weapon - Projectile - Big Space Gun.png" id="3_ha2ng"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsdo2"]
@@ -92,6 +92,8 @@ radius = 16.0
 script = ExtResource("1_qkrs2")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_t88vw")]
+damageAmount = 20.0
+isPiercing = true
 
 [node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
 shape = SubResource("CircleShape2D_vsdo2")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1lwban56w5qf"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Player/Projectiles/ProjectileComponent.cs" id="1_gn0a1"]
+[ext_resource type="Script" path="res://Assets/Characters/ProjectileComponent.cs" id="1_gn0a1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftun"]
 radius = 6.0

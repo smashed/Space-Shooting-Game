@@ -1,4 +1,4 @@
-public enum Engine 
+public enum ShipEngineType 
 {
 	Base,
 	BigPulse,

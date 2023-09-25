@@ -3,27 +3,26 @@ using System;
 
 public partial class ShipEngine : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SetEngine(Engine.Base);
+		SetEngine(ShipEngineType.Base);
 	}
 
-	public void SetEngine(Engine shipEngine)
+	public void SetEngine(ShipEngineType shipEngine)
 	{
 		switch (shipEngine)
 		{
-			case Engine.BigPulse:
+			case ShipEngineType.BigPulse:
 				HideEngines();
 				GetNode<Node2D>("Big Pulse").Show();
 				break;
 
-			case Engine.Burst:
+			case ShipEngineType.Burst:
 				HideEngines();
 				GetNode<Node2D>("Burst").Show();
 				break;
 
-			case Engine.Supercharged:
+			case ShipEngineType.Supercharged:
 				HideEngines();
 				GetNode<Node2D>("Supercharged").Show();
 				break;
@@ -35,15 +34,15 @@ public partial class ShipEngine : Node2D
 		}
 	}
 
-	private void HideEngines() 
+	void HideEngines() 
 	{
 		foreach (Node2D eng in GetChildren()) 
 			eng.Hide();
 	}
 
-	private void SetRandomShipEngine() {
-		Array values = Enum.GetValues(typeof(Engine));
+	void SetRandomShipEngine() {
+		Array values = Enum.GetValues(typeof(ShipEngineType));
 		var random = new Random();
-		SetEngine((Engine)values.GetValue(random.Next(values.Length)));
+		SetEngine((ShipEngineType)values.GetValue(random.Next(values.Length)));
 	}
 }

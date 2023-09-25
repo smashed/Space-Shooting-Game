@@ -3,31 +3,30 @@ using System;
 
 public partial class ShipWeapons : AnimatedSprite2D
 {
-	public string fireProjectile;
-
 	Weapon weapon = Weapon.AutoCannon;
-	PackedScene projectile;
-	PackedScene autoCannonProjectile;
-	PackedScene bigSpaceGunProjectile;
-	PackedScene rocketProjectile;
-	PackedScene zapperProjectile;
+	PackedScene _projectile;
+	PackedScene _autoCannonProjectile;
+	PackedScene _bigSpaceGunProjectile;
+	PackedScene _rocketProjectile;
+	PackedScene _zapperProjectile;
 
 	bool autoCannonShot = false;
 	int rockets = 6;
 	
-	// Called when the node enters the scene tree for the first time.
+	public string FireProjectile { get; private set; }
+	
 	public override void _Ready()
 	{
 		SetWeapon(weapon);
-		autoCannonProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/AutoCannonProjectile.tscn");
-		bigSpaceGunProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/BigSpaceGunProjectile.tscn");
-		rocketProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/RocketProjectile.tscn");
-		zapperProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/ZapperProjectile.tscn");
+		_autoCannonProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/AutoCannonProjectile.tscn");
+		_bigSpaceGunProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/BigSpaceGunProjectile.tscn");
+		_rocketProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/RocketProjectile.tscn");
+		_zapperProjectile = ResourceLoader.Load<PackedScene>("res://Assets/Characters/Player/Projectiles/ZapperProjectile.tscn");
 	}
 
 	public void FireAutoCannonProjectile()
 	{
-		var bullet = (Node2D)autoCannonProjectile.Instantiate();
+		var bullet = (Node2D)_autoCannonProjectile.Instantiate();
 		var shotPos = autoCannonShot ? 27 : -27;
 		autoCannonShot = autoCannonShot ? false : true;
 		GetNode("/root/Game").AddChild(bullet);
@@ -36,14 +35,14 @@ public partial class ShipWeapons : AnimatedSprite2D
 
 	public void FireBigSpaceGunProjectile() 
 	{
-		var bullet = (Node2D)bigSpaceGunProjectile.Instantiate();
+		var bullet = (Node2D)_bigSpaceGunProjectile.Instantiate();
 		GetNode("/root/Game").AddChild(bullet);
 		bullet.GlobalPosition = GlobalPosition;
 	}
 
 	public void FireRocketProjectile() 
 	{
-		var bullet = (Node2D)rocketProjectile.Instantiate();
+		var bullet = (Node2D)_rocketProjectile.Instantiate();
 		var shotPosX = -19.5f;
 		var shotPosY = 12f;
 
@@ -85,8 +84,8 @@ public partial class ShipWeapons : AnimatedSprite2D
 
 	public void FireZapperProjectile() 
 	{
-		var bullet1 = (Node2D)zapperProjectile.Instantiate();
-		var bullet2 = (Node2D)zapperProjectile.Instantiate();
+		var bullet1 = (Node2D)_zapperProjectile.Instantiate();
+		var bullet2 = (Node2D)_zapperProjectile.Instantiate();
 		var shotPosX1 = -22.5f;
 		var shotPosX2 = 22.5f;
 		var shotPosY = -46f;
@@ -102,19 +101,19 @@ public partial class ShipWeapons : AnimatedSprite2D
 		{
 			case Weapon.BigSpaceGun:
 				Animation = "Big Space Gun";
-				fireProjectile = "BigSpaceGunProjectile";
+				FireProjectile = "BigSpaceGunProjectile";
 				return;
 			case Weapon.Rockets:
 				Animation = "Rockets";
-				fireProjectile = "RocketProjectile";
+				FireProjectile = "RocketProjectile";
 				return;
 			case Weapon.Zapper:
 				Animation = "Zapper";
-				fireProjectile = "ZapperProjectile";
+				FireProjectile = "ZapperProjectile";
 				return;
 			default:
 				Animation = "Auto Cannon";
-				fireProjectile = "AutoCannonProjectile";
+				FireProjectile = "AutoCannonProjectile";
 				return;
 		}
 	}
