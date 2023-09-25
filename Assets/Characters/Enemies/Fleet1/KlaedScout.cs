@@ -5,10 +5,12 @@ public partial class KlaedScout : CharacterBody2D
 {
 	[Export] public float speed = 600.0f;
 	[Export] public float collisionDamage = 10.0f;
+	
 	bool _isCollision;
 	Timer _bounceTimer;
-	AnimationPlayer _animationPlayer;
+	
 	HealthComponent _health;
+	AnimationPlayer _animationPlayer;
 
 	public override void _Ready()
 	{
@@ -42,13 +44,14 @@ public partial class KlaedScout : CharacterBody2D
 		Velocity = Vector2.Zero;
 	}
 
-	void OnHealthDepleted() {
-		SetCollisionLayerValue(1, false);
+	void OnShipDestroyed()
+	{
 		_animationPlayer.Play("Explode", -1, 5);
 	}
 
 	void OnAnimationFinished(StringName animName)
     {
-        QueueFree();
+        if (animName == "Explode")
+        	QueueFree();
     }
 }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd0hb5afxw8b7"]
+[gd_scene load_steps=7 format=3 uid="uid://cd0hb5afxw8b7"]
 
-[ext_resource type="PackedScene" uid="uid://dfi1je071bwdp" path="res://Assets/Characters/Player/Player.tscn" id="1_0ogfu"]
+[ext_resource type="Script" path="res://Scenes/Game.cs" id="1_qyxpk"]
 [ext_resource type="PackedScene" uid="uid://cflgc5dq572o8" path="res://Assets/Environment/Background/BG.tscn" id="2_xd43v"]
-[ext_resource type="PackedScene" uid="uid://vwe4nakxnld2" path="res://Assets/Characters/Enemies/Fleet1/KlaedScout.tscn" id="3_fpo6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbpab"]
 size = Vector2(761, 20)
@@ -17,27 +16,25 @@ size = Vector2(21, 1320)
 size = Vector2(20, 1320)
 
 [node name="Game" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_0ogfu")]
-position = Vector2(360, 1080)
+script = ExtResource("1_qyxpk")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_xd43v")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="CharacterBounds" type="StaticBody2D" parent="."]
 
-[node name="TopBound" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="TopBound" type="CollisionShape2D" parent="CharacterBounds"]
 position = Vector2(359.5, -10)
 shape = SubResource("RectangleShape2D_wbpab")
 
-[node name="BottomBound" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="BottomBound" type="CollisionShape2D" parent="CharacterBounds"]
 position = Vector2(359.5, 1290)
 shape = SubResource("RectangleShape2D_huqa8")
 
-[node name="LeftBound" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="LeftBound" type="CollisionShape2D" parent="CharacterBounds"]
 position = Vector2(-10.5, 640)
 shape = SubResource("RectangleShape2D_6y11e")
 
-[node name="RightBound" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="RightBound" type="CollisionShape2D" parent="CharacterBounds"]
 position = Vector2(730, 640)
 shape = SubResource("RectangleShape2D_wfglm")
 
@@ -48,20 +45,4 @@ limit_top = -640
 limit_right = 360
 limit_bottom = 640
 
-[node name="KlaedScout" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(168, 925)
-
-[node name="KlaedScout2" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(589, 861)
-
-[node name="KlaedScout3" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(348, 841)
-
-[node name="KlaedScout4" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(173, 726)
-
-[node name="KlaedScout5" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(521, 701)
-
-[node name="KlaedScout6" parent="." instance=ExtResource("3_fpo6x")]
-position = Vector2(402, 562)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

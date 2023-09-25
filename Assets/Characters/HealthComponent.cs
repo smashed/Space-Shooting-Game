@@ -11,7 +11,7 @@ public partial class HealthComponent : Node2D
 
 	[Export] public float MaxHealth { get => _maxHealth; private set => _maxHealth = value; }
 
-	public float HealthPercentage => MaxHealth > 0 ? _currentHealth / MaxHealth : 0f;
+	public float CurrentHealth => _currentHealth;
 
 	public bool HasDied => _hasDied;
 
@@ -25,18 +25,19 @@ public partial class HealthComponent : Node2D
 		float previousHealth = _currentHealth;
 		_currentHealth -= damage;
 		EmitSignal(SignalName.HealthChanged, previousHealth, _currentHealth);
-		GD.Print("Health " + _currentHealth);
+		//GD.Print("Health " + _currentHealth);
 
 		if (_currentHealth <= 0 && !_hasDied)
 		{
 			_hasDied = true;
 			EmitSignal(SignalName.HealthDepleted);
-			GD.Print("Has Died = " + _hasDied);
+			//GD.Print("Has Died = " + _hasDied);
 		}
 	}
 
 	public void InitializeHealth()
 	{
 		_currentHealth = MaxHealth;
+		//EmitSignal(SignalName.HealthChanged, _currentHealth, _currentHealth);
 	}
 }

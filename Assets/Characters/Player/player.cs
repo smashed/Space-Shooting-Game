@@ -30,6 +30,9 @@ public partial class Player : CharacterBody2D
 		_background = GetNode<ParallaxLayer>("/root/Game/ParallaxBackground/TransparentBG");
 		_bounceTimer = GetNode<Timer>("BounceTimer");
     	_bounceTimer.Timeout += OnBounceTimerTimeout;
+
+		_shipSprite.Animation = "Ship";
+		_shipSprite.Frame = 0;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -118,26 +121,28 @@ public partial class Player : CharacterBody2D
 
 	void OnHealthChanged(float oldHealth, float newHealth) 
 	{
-		GD.Print(oldHealth, " : I Got Hit : " + newHealth);
-		int frame = 0;
-		if (newHealth / _health.MaxHealth < 0.3)
-			frame = 3;
-		else if (newHealth / _health.MaxHealth < 0.6)
-			frame = 2;
-		else if (newHealth / _health.MaxHealth < 0.9)
-			frame = 1;
-		_shipSprite.Animation = "Ship";
-		_shipSprite.Frame = frame;
+		if (oldHealth > newHealth) 
+		{
+			int frame = 0;
+			if (newHealth / _health.MaxHealth < 0.3)
+				frame = 3;
+			else if (newHealth / _health.MaxHealth < 0.6)
+				frame = 2;
+			else if (newHealth / _health.MaxHealth < 0.9)
+				frame = 1;
+			_shipSprite.Animation = "Ship";
+			_shipSprite.Frame = frame;
+		} 
 	}
 
 	void OnHealthDepleted() 
 	{
-		GD.Print("I Died");
 		_animationPlayer.Play("Explode", -1, 5);
 	}
 
 	void OnAnimationFinished(StringName animName)
     {
-        QueueFree();
+		if (animName == "Explode")
+        	QueueFree();
     }
 }

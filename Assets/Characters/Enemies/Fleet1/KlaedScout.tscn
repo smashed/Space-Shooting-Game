@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://vwe4nakxnld2"]
+[gd_scene load_steps=35 format=3 uid="uid://vwe4nakxnld2"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/KlaedScout.cs" id="1_8j6rg"]
 [ext_resource type="Texture2D" uid="uid://dixcqauh5qpgy" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Kla'ed - Scout - Base.png" id="2_3i57y"]
 [ext_resource type="Texture2D" uid="uid://dr31ox0jb14i8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Engine Effects/Kla'ed - Scout - Engine.png" id="2_ycugq"]
 [ext_resource type="Texture2D" uid="uid://waocjiseucdl" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Explode/Kla'ed - Scout - Destruction.png" id="3_500sh"]
 [ext_resource type="PackedScene" uid="uid://cen1pxiwl2wqw" path="res://Assets/Characters/HealthComponent.tscn" id="5_2ciex"]
+[ext_resource type="PackedScene" uid="uid://clqwujlqaedrw" path="res://Assets/Characters/DamageComponent.tscn" id="5_6yqv5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab4lh"]
 radius = 11.0
@@ -333,6 +334,8 @@ sprite_frames = SubResource("SpriteFrames_ug58y")
 sprite_frames = SubResource("SpriteFrames_1fico")
 animation = &"Ship"
 
+[node name="DamageComponent" parent="." instance=ExtResource("5_6yqv5")]
+
 [node name="HealthComponent" parent="." instance=ExtResource("5_2ciex")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -345,4 +348,6 @@ libraries = {
 wait_time = 0.2
 one_shot = true
 
-[connection signal="HealthDepleted" from="HealthComponent" to="." method="OnHealthDepleted"]
+[connection signal="Destroyed" from="DamageComponent" to="." method="OnShipDestroyed"]
+[connection signal="HealthChanged" from="HealthComponent" to="DamageComponent" method="OnHealthChanged"]
+[connection signal="HealthDepleted" from="HealthComponent" to="DamageComponent" method="OnHealthDepleted"]

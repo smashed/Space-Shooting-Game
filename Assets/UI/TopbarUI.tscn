@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcwgoj7m51sk1"]
+
+[ext_resource type="Script" path="res://Assets/UI/HealthBarRect.cs" id="1_6tpmf"]
+[ext_resource type="Script" path="res://Assets/UI/TopbarUI.cs" id="1_u4l5f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5jq7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjlcc"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtfws"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1xng"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TopbarUI" type="MarginContainer" node_paths=PackedStringArray("score")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_u4l5f")
+score = NodePath("HBoxContainer/Score")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HealthBarRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0)
+script = ExtResource("1_6tpmf")
+
+[node name="ProgressBarBack" type="ProgressBar" parent="HBoxContainer/HealthBarRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_j5jq7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sjlcc")
+value = 70.0
+show_percentage = false
+
+[node name="ProgressBarFront" type="ProgressBar" parent="HBoxContainer/HealthBarRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mtfws")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c1xng")
+value = 50.0
+show_percentage = false
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 36
+text = "000000000"
