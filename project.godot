@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Space Shooting Game"
+config/description="Just another space shooting game"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://space-shooter.png"
 
 [display]
 
