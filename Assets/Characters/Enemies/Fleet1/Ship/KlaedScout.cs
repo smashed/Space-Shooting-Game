@@ -6,11 +6,15 @@ public partial class KlaedScout : CharacterBody2D
 	[Export] public float speed = 600.0f;
 	[Export] public float collisionDamage = 10.0f;
 	
+	
 	bool _isCollision;
 	Timer _bounceTimer;
+	Timer _shootTimer;
+	float _fireRate = 1.0f;
 	
 	HealthComponent _health;
 	AnimationPlayer _animationPlayer;
+	RandomNumberGenerator random;
 
 	public override void _Ready()
 	{
@@ -19,6 +23,10 @@ public partial class KlaedScout : CharacterBody2D
 		_bounceTimer = GetNode<Timer>("BounceTimer");
     	_bounceTimer.Timeout += OnBounceTimerTimeout;
 		_health = GetNode<HealthComponent>("HealthComponent");
+		_shootTimer = GetNode<Timer>("ShootTimer");
+		_shootTimer.WaitTime = GetRandomRange();
+		_shootTimer.Timeout += OnShootTimerTimeOut;
+		_shootTimer.Start();
 	}
 
     public override void _PhysicsProcess(double delta)
@@ -54,4 +62,19 @@ public partial class KlaedScout : CharacterBody2D
         if (animName == "Explode")
         	QueueFree();
     }
+
+	void OnShootTimerTimeOut()
+	{
+		//GD.Print("Shooting" + this.Name);
+		_animationPlayer.Play("KlaedWaveProjectile", -1, _fireRate);
+		_shootTimer.WaitTime = GetRandomRange();
+		_shootTimer.Start();
+	}
+	
+
+	float GetRandomRange() {
+		random = new RandomNumberGenerator();
+		random.Randomize();
+		return random.RandfRange(5.0f, 15.0f);
+	}
 }

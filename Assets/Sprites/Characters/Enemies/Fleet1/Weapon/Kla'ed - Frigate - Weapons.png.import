@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpg1tq45tcwr7"
-path="res://.godot/imported/Kla'ed - Dreadnought - Weapons.png-d9cc364593daf6e8e42eefb5765992ea.ctex"
+uid="uid://ccg61ctc0sgii"
+path="res://.godot/imported/Kla'ed - Frigate - Weapons.png-4d3de06e873e4a29d423bde200282291.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon Projectiles/Kla'ed - Dreadnought - Weapons.png"
-dest_files=["res://.godot/imported/Kla'ed - Dreadnought - Weapons.png-d9cc364593daf6e8e42eefb5765992ea.ctex"]
+source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Kla'ed - Frigate - Weapons.png"
+dest_files=["res://.godot/imported/Kla'ed - Frigate - Weapons.png-4d3de06e873e4a29d423bde200282291.ctex"]
 
 [params]
 

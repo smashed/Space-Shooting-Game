@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds107atc2jbc8"
-path="res://.godot/imported/Kla'ed - Scout - Weapons.png-f35584cef03ea483a216d1dfe6c8c647.ctex"
+path="res://.godot/imported/Kla'ed - Scout - Weapons.png-43f79d26d21b6a75436ede025855322b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon Projectiles/Kla'ed - Scout - Weapons.png"
-dest_files=["res://.godot/imported/Kla'ed - Scout - Weapons.png-f35584cef03ea483a216d1dfe6c8c647.ctex"]
+source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Kla'ed - Scout - Weapons.png"
+dest_files=["res://.godot/imported/Kla'ed - Scout - Weapons.png-43f79d26d21b6a75436ede025855322b.ctex"]
 
 [params]
 

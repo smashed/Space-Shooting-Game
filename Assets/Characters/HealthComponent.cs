@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class HealthComponent : Node2D
@@ -40,4 +41,10 @@ public partial class HealthComponent : Node2D
 		_currentHealth = MaxHealth;
 		//EmitSignal(SignalName.HealthChanged, _currentHealth, _currentHealth);
 	}
+
+    internal void Connect(string v, Action<float, float> onPlayerHealthChanged, Godot.Collections.Array array)
+    {
+        throw new NotImplementedException();
+    }
+
 }

@@ -1,54 +1,56 @@
-[gd_scene load_steps=35 format=3 uid="uid://vwe4nakxnld2"]
+[gd_scene load_steps=45 format=3 uid="uid://vwe4nakxnld2"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/KlaedScout.cs" id="1_8j6rg"]
-[ext_resource type="Texture2D" uid="uid://dixcqauh5qpgy" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Kla'ed - Scout - Base.png" id="2_3i57y"]
-[ext_resource type="Texture2D" uid="uid://dr31ox0jb14i8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Engine Effects/Kla'ed - Scout - Engine.png" id="2_ycugq"]
-[ext_resource type="Texture2D" uid="uid://waocjiseucdl" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Explode/Kla'ed - Scout - Destruction.png" id="3_500sh"]
-[ext_resource type="PackedScene" uid="uid://cen1pxiwl2wqw" path="res://Assets/Characters/HealthComponent.tscn" id="5_2ciex"]
-[ext_resource type="PackedScene" uid="uid://clqwujlqaedrw" path="res://Assets/Characters/DamageComponent.tscn" id="5_6yqv5"]
+[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/Ship/KlaedScout.cs" id="1_wcmmr"]
+[ext_resource type="Texture2D" uid="uid://dr31ox0jb14i8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Engine Effects/Kla'ed - Scout - Engine.png" id="2_6kojh"]
+[ext_resource type="Texture2D" uid="uid://waocjiseucdl" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Explode/Kla'ed - Scout - Destruction.png" id="3_mq7hm"]
+[ext_resource type="Texture2D" uid="uid://dixcqauh5qpgy" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Base/Kla'ed - Scout - Base.png" id="4_q7iuu"]
+[ext_resource type="PackedScene" uid="uid://clqwujlqaedrw" path="res://Assets/Characters/DamageComponent.tscn" id="5_cofe1"]
+[ext_resource type="Texture2D" uid="uid://ds107atc2jbc8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Kla'ed - Scout - Weapons.png" id="5_kwqm0"]
+[ext_resource type="PackedScene" uid="uid://cen1pxiwl2wqw" path="res://Assets/Characters/HealthComponent.tscn" id="6_byrki"]
+[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/EnemyShipWeapons.cs" id="6_pguw1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab4lh"]
 radius = 11.0
 height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fg7vw"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyp7r"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85c0o"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr2su"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rsol"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ky7jq"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02r0g"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kguv"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv0wp"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4csu"]
-atlas = ExtResource("2_ycugq")
+atlas = ExtResource("2_6kojh")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ug58y"]
@@ -90,47 +92,47 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6fw3"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4ied"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d4fd"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnccx"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pij7a"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8q21"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2pi6b"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nspjy"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7g1k"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bvju"]
-atlas = ExtResource("3_500sh")
+atlas = ExtResource("3_mq7hm")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1q60s"]
-atlas = ExtResource("2_3i57y")
+atlas = ExtResource("4_q7iuu")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fico"]
@@ -176,6 +178,56 @@ animations = [{
 }],
 "loop": true,
 "name": &"Ship",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbb40"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nilb4"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddmty"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju05h"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw55f"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvqb6"]
+atlas = ExtResource("5_kwqm0")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xb4gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbb40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nilb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddmty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju05h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw55f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvqb6")
+}],
+"loop": false,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -280,6 +332,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ship Weapons:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Weapons:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_qlvk1"]
 resource_name = "Thrusting"
@@ -310,9 +386,51 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_kcdng"]
+resource_name = "KlaedWaveProjectile"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship Weapons:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship Weapons:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship Weapons")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"KlaedWaveProjectile"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfder"]
 _data = {
 "Explode": SubResource("Animation_xyhj7"),
+"KlaedWaveProjectile": SubResource("Animation_kcdng"),
 "RESET": SubResource("Animation_gju2n"),
 "Thrusting": SubResource("Animation_qlvk1")
 }
@@ -321,7 +439,7 @@ _data = {
 rotation = 3.14159
 scale = Vector2(3, 3)
 motion_mode = 1
-script = ExtResource("1_8j6rg")
+script = ExtResource("1_wcmmr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -329,14 +447,19 @@ shape = SubResource("CapsuleShape2D_ab4lh")
 
 [node name="Engine" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ug58y")
+autoplay = "default"
 
 [node name="Ship" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fico")
 animation = &"Ship"
 
-[node name="DamageComponent" parent="." instance=ExtResource("5_6yqv5")]
+[node name="Ship Weapons" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xb4gn")
+script = ExtResource("6_pguw1")
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_2ciex")]
+[node name="DamageComponent" parent="." instance=ExtResource("5_cofe1")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_byrki")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Thrusting"
@@ -346,6 +469,9 @@ libraries = {
 
 [node name="BounceTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="Destroyed" from="DamageComponent" to="." method="OnShipDestroyed"]

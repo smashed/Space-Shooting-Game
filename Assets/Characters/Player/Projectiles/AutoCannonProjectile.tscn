@@ -48,6 +48,7 @@ height = 20.0
 script = ExtResource("1_trwmy")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_0kl0l")]
+isPlayer = true
 
 [node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
 position = Vector2(0, 1)

@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 	[Export] public float speed = 600.0f;
 	[Export] public float collisionDamage = 15.0f;
 	
+	float _fireRate = 2.0f;
 	AnimatedSprite2D _shipSprite;
 	AnimationTree _animationTree;
 	AnimationPlayer _animationPlayer;
@@ -13,6 +14,7 @@ public partial class Player : CharacterBody2D
 	ShipEngine _shipEngine;
 	HealthComponent _health;
 
+	bool isDead;
 	bool _isCollision;
 	Timer _bounceTimer;
 
@@ -20,7 +22,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-		_shipSprite = GetNode<AnimatedSprite2D>("Ship");
+		_shipSprite = GetNode<AnimatedSprite2D>("ShipAnimatedSprite");
         _animationTree = GetNode<AnimationTree>("AnimationTree");
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_animationPlayer.AnimationFinished += OnAnimationFinished;
@@ -37,10 +39,16 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		Move(delta);
-		Fire();
-		ShipEngine();
-		ShipWeapon();
+		if (!isDead)
+		{
+			Move(delta);
+			Fire();
+			ShipEngine();
+			ShipWeapon();
+			return;
+		}
+		// Force animation // Sometimes it gets stuck
+		OnHealthDepleted(); 
 	}
 
 	void Move(double delta)
@@ -70,8 +78,8 @@ public partial class Player : CharacterBody2D
 	void Fire()
 	{
 		// Handle Shoot.
-		if (Input.IsActionJustPressed("Fire"))
-			_animationPlayer.Play(_shipWeapon.FireProjectile);
+		if (Input.IsActionPressed("Fire"))
+			_animationPlayer.Play(_shipWeapon.FireProjectile, -1, _fireRate);
 	}
 
 	void ShipWeapon()
@@ -132,17 +140,26 @@ public partial class Player : CharacterBody2D
 				frame = 1;
 			_shipSprite.Animation = "Ship";
 			_shipSprite.Frame = frame;
-		} 
+		}
+		GD.Print("My health: " + newHealth);
+		if (newHealth <= 0)
+			OnHealthDepleted();
 	}
 
 	void OnHealthDepleted() 
 	{
-		_animationPlayer.Play("Explode", -1, 5);
+		isDead = true;
+		SetCollisionLayerValue(1, false);
+		if (_animationPlayer.CurrentAnimation != "Explode")
+			_animationPlayer.Play("Explode", -1, 5);
 	}
 
 	void OnAnimationFinished(StringName animName)
     {
 		if (animName == "Explode")
-        	QueueFree();
+		{
+			GetNode<Game>("/root/Game").OnPlayerDied();
+			QueueFree();
+		}
     }
 }

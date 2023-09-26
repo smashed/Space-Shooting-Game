@@ -94,6 +94,7 @@ script = ExtResource("1_qkrs2")
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_t88vw")]
 damageAmount = 20.0
 isPiercing = true
+isPlayer = true
 
 [node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
 shape = SubResource("CircleShape2D_vsdo2")

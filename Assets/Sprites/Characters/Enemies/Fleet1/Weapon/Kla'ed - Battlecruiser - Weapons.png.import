@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccg61ctc0sgii"
-path="res://.godot/imported/Kla'ed - Frigate - Weapons.png-9d2689320c61239f96f5311d5f3beeb5.ctex"
+uid="uid://cafk4cflitb26"
+path="res://.godot/imported/Kla'ed - Battlecruiser - Weapons.png-0d05b85a1ffa324b0855b20e00ca0920.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon Projectiles/Kla'ed - Frigate - Weapons.png"
-dest_files=["res://.godot/imported/Kla'ed - Frigate - Weapons.png-9d2689320c61239f96f5311d5f3beeb5.ctex"]
+source_file="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Kla'ed - Battlecruiser - Weapons.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Weapons.png-0d05b85a1ffa324b0855b20e00ca0920.ctex"]
 
 [params]
 

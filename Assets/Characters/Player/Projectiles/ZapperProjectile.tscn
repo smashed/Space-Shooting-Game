@@ -79,6 +79,7 @@ script = ExtResource("1_432q2")
 
 [node name="projectile" parent="." instance=ExtResource("2_s6ghm")]
 damageAmount = 15.0
+isPlayer = true
 
 [node name="CollisionShape2D" parent="projectile" index="0"]
 shape = SubResource("RectangleShape2D_ajiue")

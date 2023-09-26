@@ -45,6 +45,7 @@ script = ExtResource("1_dpp03")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_rnnv4")]
 damageAmount = 5.0
+isPlayer = true
 
 [node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
 position = Vector2(-0.5, 1)

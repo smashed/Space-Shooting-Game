@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://de8d3w1dh00kn"]
+
+[ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/Projectiles/KlaedWaveProjectile.cs" id="1_864e3"]
+[ext_resource type="PackedScene" uid="uid://b1lwban56w5qf" path="res://Assets/Characters/ProjectileComponent.tscn" id="1_xkpqe"]
+[ext_resource type="Texture2D" uid="uid://7ypw76qjfwcy" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Weapon Projectiles/Kla'ed - Wave.png" id="2_lsys2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke0dh"]
+size = Vector2(36, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jxa6"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fdyi"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rapq"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5308"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t33wx"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag061"]
+atlas = ExtResource("2_lsys2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1lhot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fdyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rapq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5308")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t33wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag061")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu3g0"]
+size = Vector2(36, 11)
+
+[node name="KlaedWaveProjectile" type="Area2D"]
+rotation = 3.14159
+script = ExtResource("1_864e3")
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("1_xkpqe")]
+projectileSpeed = 400.0
+
+[node name="CollisionShape2D" parent="ProjectileComponent" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ke0dh")
+
+[node name="Timer" parent="ProjectileComponent" index="1"]
+wait_time = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1lhot")
+autoplay = "default"
+frame = 4
+frame_progress = 0.542945
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pu3g0")
+
+[editable path="ProjectileComponent"]

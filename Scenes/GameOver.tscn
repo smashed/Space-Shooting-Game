@@ -1,0 +1,158 @@
+[gd_scene load_steps=8 format=3 uid="uid://ke3rftg2u73j"]
+
+[ext_resource type="Script" path="res://Scenes/GameOver.cs" id="1_fa74e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o04j8"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 1, 0, 0.392157)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm68u"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.607843, 0, 0.784314)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d82u"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.392157, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_662tv"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h0k3"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.607843, 0, 0)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m758t"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0.392157, 0, 0)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 15
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 15
+
+[node name="GameOverContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1280.0
+offset_bottom = -1280.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_fa74e")
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -51.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 160.0
+offset_right = 125.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.392157, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.607843, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.607843, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_o04j8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pm68u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7d82u")
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 280.0
+offset_right = 125.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.619608, 0.619608, 0.619608, 1)
+theme_override_colors/font_pressed_color = Color(0.360784, 0.360784, 0.360784, 1)
+theme_override_colors/font_hover_color = Color(0.360784, 0.360784, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(0.360784, 0.360784, 0.360784, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_662tv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6h0k3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m758t")
+text = " Menu"
+
+[connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
+[connection signal="pressed" from="MenuButton" to="." method="OnMenuButtonPressed"]
