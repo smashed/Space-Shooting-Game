@@ -13,18 +13,20 @@ public partial class KlaedScout : CharacterBody2D
 	float _fireRate = 1.0f;
 	
 	HealthComponent _health;
-	AnimationPlayer _animationPlayer;
+	AnimationPlayer _animationFire;
+	AnimationPlayer _animationExplosion;
 	RandomNumberGenerator random;
 
 	public override void _Ready()
 	{
-		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		_animationPlayer.AnimationFinished += OnAnimationFinished;
+		_animationFire = GetNode<AnimationPlayer>("AnimationFire");
+		_animationExplosion = GetNode<AnimationPlayer>("AnimationExplosion");
+		_animationExplosion.AnimationFinished += OnAnimationFinished;
 		_bounceTimer = GetNode<Timer>("BounceTimer");
     	_bounceTimer.Timeout += OnBounceTimerTimeout;
 		_health = GetNode<HealthComponent>("HealthComponent");
 		_shootTimer = GetNode<Timer>("ShootTimer");
-		_shootTimer.WaitTime = GetRandomRange();
+		_shootTimer.WaitTime = GetRandomRange(5.0f, 15.0f);
 		_shootTimer.Timeout += OnShootTimerTimeOut;
 		_shootTimer.Start();
 	}
@@ -54,7 +56,7 @@ public partial class KlaedScout : CharacterBody2D
 
 	void OnShipDestroyed()
 	{
-		_animationPlayer.Play("Explode", -1, 5);
+		_animationExplosion.Play("Explode", -1, 5);
 	}
 
 	void OnAnimationFinished(StringName animName)
@@ -66,15 +68,15 @@ public partial class KlaedScout : CharacterBody2D
 	void OnShootTimerTimeOut()
 	{
 		//GD.Print("Shooting" + this.Name);
-		_animationPlayer.Play("KlaedWaveProjectile", -1, _fireRate);
-		_shootTimer.WaitTime = GetRandomRange();
+		_animationFire.Play("KlaedWaveProjectile", -1, _fireRate);
+		_shootTimer.WaitTime = GetRandomRange(5.0f, 15.0f);
 		_shootTimer.Start();
 	}
 	
 
-	float GetRandomRange() {
+	float GetRandomRange(float x, float y) {
 		random = new RandomNumberGenerator();
 		random.Randomize();
-		return random.RandfRange(5.0f, 15.0f);
+		return random.RandfRange(x, y);
 	}
 }

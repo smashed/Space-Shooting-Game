@@ -89,9 +89,13 @@ animations = [{
 radius = 16.0
 
 [node name="BigSpaceGunProjectile" type="Area2D"]
+collision_layer = 2
+collision_mask = 20
 script = ExtResource("1_qkrs2")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_t88vw")]
+collision_layer = 2
+collision_mask = 20
 damageAmount = 20.0
 isPiercing = true
 isPlayer = true

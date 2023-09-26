@@ -21,6 +21,8 @@ script = ExtResource("1_qyxpk")
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_xd43v")]
 
 [node name="CharacterBounds" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 13
 
 [node name="TopBound" type="CollisionShape2D" parent="CharacterBounds"]
 position = Vector2(359.5, -10)
@@ -44,5 +46,3 @@ limit_left = -360
 limit_top = -640
 limit_right = 360
 limit_bottom = 640
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]

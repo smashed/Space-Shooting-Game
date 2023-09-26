@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://vwe4nakxnld2"]
+[gd_scene load_steps=46 format=3 uid="uid://vwe4nakxnld2"]
 
 [ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/Ship/KlaedScout.cs" id="1_wcmmr"]
 [ext_resource type="Texture2D" uid="uid://dr31ox0jb14i8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Engine Effects/Kla'ed - Scout - Engine.png" id="2_6kojh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ds107atc2jbc8" path="res://Assets/Sprites/Characters/Enemies/Fleet1/Weapon/Kla'ed - Scout - Weapons.png" id="5_kwqm0"]
 [ext_resource type="PackedScene" uid="uid://cen1pxiwl2wqw" path="res://Assets/Characters/HealthComponent.tscn" id="6_byrki"]
 [ext_resource type="Script" path="res://Assets/Characters/Enemies/Fleet1/EnemyShipWeapons.cs" id="6_pguw1"]
+[ext_resource type="PackedScene" uid="uid://b31l7ecgqwdng" path="res://Assets/Characters/Enemies/EnemyMovement.tscn" id="7_p2p5i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab4lh"]
 radius = 11.0
@@ -438,6 +439,8 @@ _data = {
 [node name="Klaed Scout" type="CharacterBody2D" groups=["Enemies"]]
 rotation = 3.14159
 scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_wcmmr")
 
@@ -457,12 +460,18 @@ animation = &"Ship"
 sprite_frames = SubResource("SpriteFrames_xb4gn")
 script = ExtResource("6_pguw1")
 
+[node name="EnemyMovement" parent="." instance=ExtResource("7_p2p5i")]
+
 [node name="DamageComponent" parent="." instance=ExtResource("5_cofe1")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_byrki")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Thrusting"
+[node name="AnimationFire" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dfder")
+}
+
+[node name="AnimationExplosion" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dfder")
 }

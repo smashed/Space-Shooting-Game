@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 public partial class Player : CharacterBody2D
 {
@@ -8,7 +10,7 @@ public partial class Player : CharacterBody2D
 	
 	float _fireRate = 2.0f;
 	AnimatedSprite2D _shipSprite;
-	AnimationTree _animationTree;
+	AnimationTree _animationMovement;
 	AnimationPlayer _animationPlayer;
 	ShipWeapons _shipWeapon;
 	ShipEngine _shipEngine;
@@ -23,9 +25,8 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
 		_shipSprite = GetNode<AnimatedSprite2D>("ShipAnimatedSprite");
-        _animationTree = GetNode<AnimationTree>("AnimationTree");
+        _animationMovement = GetNode<AnimationTree>("AnimationMovement");
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		_animationPlayer.AnimationFinished += OnAnimationFinished;
 		_shipWeapon = GetNode<ShipWeapons>("Ship Weapons");
 		_shipEngine = GetNode<ShipEngine>("Ship Engine");
 		_health = GetNode<HealthComponent>("HealthComponent");
@@ -60,15 +61,13 @@ public partial class Player : CharacterBody2D
 
 		if (Velocity > Vector2.Zero || Velocity < Vector2.Zero) //direction != Vector2.Zero)
 		{
-			_animationTree.Set("parameters/conditions/is_moving", true);
-			_animationTree.Set("parameters/conditions/idle", false);
+			_animationMovement.Set("parameters/Movement/transition_request", "is_moving");
 			if (!IsOnWall())
 				_background.MotionOffset -= direction;
 		}
 		else
 		{
-			_animationTree.Set("parameters/conditions/idle", true);
-			_animationTree.Set("parameters/conditions/is_moving", false);
+			_animationMovement.Set("parameters/Movement/transition_request", "idle");
 		}
 
 		MoveAndSlide();
@@ -146,20 +145,16 @@ public partial class Player : CharacterBody2D
 			OnHealthDepleted();
 	}
 
-	void OnHealthDepleted() 
+	async void OnHealthDepleted() 
 	{
 		isDead = true;
 		SetCollisionLayerValue(1, false);
-		if (_animationPlayer.CurrentAnimation != "Explode")
-			_animationPlayer.Play("Explode", -1, 5);
+		_animationMovement.Set("parameters/Alive/transition_request", "is_dead");
 	}
 
-	void OnAnimationFinished(StringName animName)
-    {
-		if (animName == "Explode")
-		{
-			GetNode<Game>("/root/Game").OnPlayerDied();
-			QueueFree();
-		}
-    }
+    public void OnExplodeFinished()
+	{
+		GetNode<Game>("/root/Game").OnPlayerDied();
+		QueueFree();
+	}
 }

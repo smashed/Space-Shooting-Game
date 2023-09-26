@@ -566,7 +566,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rf4fn"]
 resource_name = "Explode"
-length = 0.6
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -614,6 +614,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnExplodeFinished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_18mu0"]
@@ -1094,36 +1108,49 @@ _data = {
 "ZapperProjectile": SubResource("Animation_eymmn")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7byoa"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_bggn1"]
+input_0/name = "is_alive"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "is_dead"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gbmpp"]
+animation = &"Explode"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l3cl7"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqpj4"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_4dkvc"]
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "is_moving"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqnpr"]
 animation = &"Thrusting"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dimb"]
-advance_mode = 2
-advance_condition = &"is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hk461"]
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_py6pm"]
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nkml0"]
-states/End/position = Vector2(1036, 117)
-states/Idle/node = SubResource("AnimationNodeAnimation_7byoa")
-states/Idle/position = Vector2(388, 117)
-states/Start/position = Vector2(231, 117)
-states/Thrusting/node = SubResource("AnimationNodeAnimation_gqpj4")
-states/Thrusting/position = Vector2(719, 117)
-transitions = ["Idle", "Thrusting", SubResource("AnimationNodeStateMachineTransition_8dimb"), "Thrusting", "Idle", SubResource("AnimationNodeStateMachineTransition_hk461"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_py6pm")]
-graph_offset = Vector2(-157, -74)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ctc1"]
+graph_offset = Vector2(723.909, 30.8102)
+nodes/Alive/node = SubResource("AnimationNodeTransition_bggn1")
+nodes/Alive/position = Vector2(1040, 80)
+nodes/Explode/node = SubResource("AnimationNodeAnimation_gbmpp")
+nodes/Explode/position = Vector2(880, 240)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_l3cl7")
+nodes/Idle/position = Vector2(700, 40)
+nodes/Movement/node = SubResource("AnimationNodeTransition_4dkvc")
+nodes/Movement/position = Vector2(880, 40)
+nodes/Thrusting/node = SubResource("AnimationNodeAnimation_dqnpr")
+nodes/Thrusting/position = Vector2(700, 160)
+nodes/output/position = Vector2(1200, 80)
+node_connections = [&"output", 0, &"Alive", &"Alive", 0, &"Movement", &"Alive", 1, &"Explode", &"Movement", 0, &"Idle", &"Movement", 1, &"Thrusting"]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_tr3r2")
 
@@ -1150,12 +1177,16 @@ libraries = {
 "": SubResource("AnimationLibrary_bk0m4")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_nkml0")
+[node name="AnimationMovement" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_8ctc1")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/conditions/idle = true
-parameters/conditions/is_moving = false
+parameters/Alive/current_state = "is_alive"
+parameters/Alive/transition_request = ""
+parameters/Alive/current_index = 0
+parameters/Movement/current_state = "idle"
+parameters/Movement/transition_request = ""
+parameters/Movement/current_index = 0
 
 [node name="BounceTimer" type="Timer" parent="."]
 wait_time = 0.2

@@ -75,9 +75,13 @@ animations = [{
 size = Vector2(8, 32)
 
 [node name="ZapperProjectile" type="Area2D"]
+collision_layer = 2
+collision_mask = 20
 script = ExtResource("1_432q2")
 
 [node name="projectile" parent="." instance=ExtResource("2_s6ghm")]
+collision_layer = 2
+collision_mask = 20
 damageAmount = 15.0
 isPlayer = true
 

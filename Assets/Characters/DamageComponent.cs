@@ -23,6 +23,6 @@ public partial class DamageComponent : Node2D
 
 	void OnHealthDepleted() { 
 		EmitSignal(SignalName.Destroyed);
-		GetParent<CharacterBody2D>().SetCollisionLayerValue(1, false);
+		GetParent<CharacterBody2D>().SetCollisionLayerValue(3, false);
 	}
 }

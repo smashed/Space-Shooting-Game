@@ -62,9 +62,13 @@ size = Vector2(36, 11)
 
 [node name="KlaedWaveProjectile" type="Area2D"]
 rotation = 3.14159
+collision_layer = 8
+collision_mask = 17
 script = ExtResource("1_864e3")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("1_xkpqe")]
+collision_layer = 8
+collision_mask = 17
 projectileSpeed = 400.0
 
 [node name="CollisionShape2D" parent="ProjectileComponent" index="0"]

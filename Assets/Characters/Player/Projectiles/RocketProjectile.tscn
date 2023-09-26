@@ -41,9 +41,13 @@ size = Vector2(5.5, 16)
 
 [node name="RocketProjectile" type="Area2D"]
 scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 20
 script = ExtResource("1_dpp03")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_rnnv4")]
+collision_layer = 2
+collision_mask = 20
 damageAmount = 5.0
 isPlayer = true
 

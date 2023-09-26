@@ -5,7 +5,7 @@ public partial class GameOver : Control
 {
 	public override void _Ready()
 	{
-		var tween = GetTree().CreateTween();
+		var tween = GetTree().CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);
 		tween.TweenProperty(this, "position", Vector2.Zero, 0.75f);
 	}
 
