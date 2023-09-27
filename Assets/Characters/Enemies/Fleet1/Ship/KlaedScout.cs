@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class KlaedScout : CharacterBody2D
 {
 	[Export] public float speed = 600.0f;

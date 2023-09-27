@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class EnemyMovement : Node2D
 {
 	float _speed = 0.0f;

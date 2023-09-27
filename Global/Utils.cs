@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Utils : Node
 {
 	// Called when the node enters the scene tree for the first time.

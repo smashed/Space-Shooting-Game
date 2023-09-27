@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class ProjectileComponent : Area2D
 {
 	[Export] float projectileSpeed = 2000.0f;

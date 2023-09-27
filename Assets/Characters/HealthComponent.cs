@@ -1,6 +1,3 @@
-using System;
-using Godot;
-
 public partial class HealthComponent : Node2D
 {
 	[Signal] public delegate void HealthChangedEventHandler(float oldHealth, float newHealth);
