@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class DamageComponent : Node2D
 {
 	[Signal] public delegate void DamagedEventHandler(int points);

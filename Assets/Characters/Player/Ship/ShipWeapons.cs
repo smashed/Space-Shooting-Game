@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class ShipWeapons : AnimatedSprite2D
 {
 	Weapon weapon = Weapon.AutoCannon;

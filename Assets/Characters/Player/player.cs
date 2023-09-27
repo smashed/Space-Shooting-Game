@@ -1,8 +1,3 @@
-using Godot;
-using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
 public partial class Player : CharacterBody2D
 {
 	[Export] public float speed = 600.0f;

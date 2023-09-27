@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class BG : ParallaxBackground
 {
 	float _scrollSpeed = 100.0f;

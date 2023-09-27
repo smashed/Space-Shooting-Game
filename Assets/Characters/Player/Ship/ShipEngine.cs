@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class ShipEngine : Node2D
 {
 	public override void _Ready()
